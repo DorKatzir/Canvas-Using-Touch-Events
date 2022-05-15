@@ -64,7 +64,7 @@ function renderCanvas() {
 
 // Set up touch events for mobile, etc
 ctx.canvas.addEventListener("touchstart", function (e) {
-    mousePos = getTouchPos(canvas, e)
+    mousePos = getTouchPos(ctx.canvas, e)
     let touch = e.touches[0]
     let mouseEvent = new MouseEvent("mousedown", {
                         clientX: touch.clientX,
