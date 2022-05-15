@@ -13,15 +13,15 @@ let lastPos = mousePos
 ctx.canvas.addEventListener("mousedown", function (e) {
     drawing = true
     lastPos = getMousePos(ctx.canvas, e)
-}, false)
+}, {passive: false})
 
 ctx.canvas.addEventListener("mouseup", function (e) {
     drawing = false
-}, false)
+}, {passive: false})
 
 ctx.canvas.addEventListener("mousemove", function (e) {
   mousePos = getMousePos(ctx.canvas, e)
-}, false)
+}, {passive: false})
 
 
 // Get the position of the mouse relative to the canvas
@@ -62,6 +62,7 @@ function renderCanvas() {
 })()
 
 
+
 // Set up touch events for mobile, etc
 ctx.canvas.addEventListener("touchstart", function (e) {
     mousePos = getTouchPos(ctx.canvas, e)
@@ -71,12 +72,14 @@ ctx.canvas.addEventListener("touchstart", function (e) {
                         clientY: touch.clientY
                     })
     ctx.canvas.dispatchEvent(mouseEvent)
-}, false)
+}, {passive: false})
+
 
 ctx.canvas.addEventListener("touchend", function (e) {
     let mouseEvent = new MouseEvent("mouseup", {})
     ctx.canvas.dispatchEvent(mouseEvent)
-}, false)
+}, {passive: false})
+
 
 ctx.canvas.addEventListener("touchmove", function (e) {
     let touch = e.touches[0];
@@ -85,7 +88,7 @@ ctx.canvas.addEventListener("touchmove", function (e) {
                         clientY: touch.clientY
                     })
     ctx.canvas.dispatchEvent(mouseEvent)
-}, false)
+}, {passive: false})
 
 
 // Get the position of a touch relative to the canvas
@@ -105,16 +108,16 @@ document.body.addEventListener("touchstart", function (e) {
     if (e.target == ctx.canvas) {
         e.preventDefault()
     }
-}, false)
+}, {passive: false})
 
 document.body.addEventListener("touchend", function (e) {
     if (e.target == ctx.canvas) {
         e.preventDefault()
     }
-}, false)
+}, {passive: false})
 
 document.body.addEventListener("touchmove", function (e) {
     if (e.target == ctx.canvas) {
         e.preventDefault()
     }
-}, false)
+}, {passive: false})
